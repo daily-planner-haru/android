@@ -1,8 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -26,11 +24,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = '1.8'
     }
 
     buildFeatures {
@@ -50,15 +48,6 @@ dependencies {
 
     // Room DB
     implementation 'androidx.room:room-runtime:2.5.0'
-
-    // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-storage'
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

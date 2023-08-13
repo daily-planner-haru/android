@@ -1,9 +1,3 @@
 <resources>
     <string name="app_name">haru</string>
-    <string name="signupText">회원가입</string>
-    <string name="signupExplain">아직 회원이 아니신가요?</string>
-    <string name="gmailLogin">GMAIL로 로그인</string>
-    <string name="kakaoLogin">KAKAO TALK으로 로그인</string>
-    <string name="naverLogin">NAVER로 로그인</string>
-    <string name="login">로그인</string>
 </resources>
