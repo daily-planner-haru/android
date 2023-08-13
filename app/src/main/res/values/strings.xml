@@ -6,4 +6,5 @@
     <string name="kakaoLogin">KAKAO TALK으로 로그인</string>
     <string name="naverLogin">NAVER로 로그인</string>
     <string name="login">로그인</string>
+    <string name="kakaoNativeKey">67d1d61b100e0ec1a0077fb7cc77d7c0</string>
 </resources>
