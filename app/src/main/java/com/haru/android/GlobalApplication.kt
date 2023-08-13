@@ -1,15 +1,15 @@
 package com.haru.android
 
 import android.app.Application
-import android.util.Log
 import com.kakao.sdk.common.KakaoSdk
-import com.kakao.sdk.common.util.Utility
+import com.navercorp.nid.NaverIdLoginSDK
 
 class GlobalApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        var keyHash = Utility.getKeyHash(this)
-        Log.d("hashkey",keyHash)
+        // kakako
         KakaoSdk.init(this, getString(R.string.kakaoNativeKey))
+        // naver
+        NaverIdLoginSDK.initialize(this.applicationContext, getString(R.string.naverClinetID),getString(R.string.naverSecretKey) ,getString(R.string.naverAppName))
     }
 }

@@ -6,5 +6,8 @@
     <string name="kakaoLogin">KAKAO TALK으로 로그인</string>
     <string name="naverLogin">NAVER로 로그인</string>
     <string name="login">로그인</string>
+    <string name="naverClinetID">Cv3inhdjI5T5djnv9Xa8</string>
+    <string name="naverSecretKey">M9_WizvSlo</string>
+    <string name="naverAppName">Daily Planner Haru</string>
     <string name="kakaoNativeKey">8abe9f2ab444e79fc1aa16186f8c3259</string>
 </resources>
