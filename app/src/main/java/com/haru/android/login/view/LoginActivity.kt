@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         kakaoViewModel.login(this)
     }
     private fun loginWithNaver(){
-        naverViewModel.login()
+        naverViewModel.login(this)
     }
 
 }

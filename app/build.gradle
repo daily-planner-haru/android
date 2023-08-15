@@ -65,6 +65,8 @@ dependencies {
 //    implementation "com.kakao.sdk:v2-share:2.15.0" // 메시지(카카오톡 공유)
 //    implementation "com.kakao.sdk:v2-navi:2.15.0" // 카카오내비
 //    implementation "com.kakao.sdk:v2-friend:2.15.0" // 카카오톡 소셜 피커, 리소스 번들 파일 포함
+    // naver
+    implementation 'com.navercorp.nid:oauth:5.7.0' // for naver login
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
