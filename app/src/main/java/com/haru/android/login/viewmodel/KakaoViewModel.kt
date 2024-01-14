@@ -2,15 +2,30 @@ package com.haru.android.login.viewmodel
 
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.haru.android.login.DTO.KakaoAccount
+import com.haru.android.login.DTO.LoginSuccessData
+import com.haru.android.login.DTO.LoginWithKakaoRequest
+import com.haru.android.login.DTO.LoginWithKakaoResponse
+import com.haru.android.login.DTO.Profile
+import com.haru.android.login.api.LoginRetrofit
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class KakaoViewModel : ViewModel() {
     lateinit var kakaoCallback: (OAuthToken?, Throwable?) -> Unit
+    private val _isLoggedIn = MutableLiveData<Boolean>()
+    val isLoggedIn: LiveData<Boolean> = _isLoggedIn
+    private val _statusCode = MutableLiveData<Int>()
+    val statusCode: LiveData<Int> = _statusCode
 
     fun init(){
         setKakaoCallback()
@@ -83,7 +98,13 @@ class KakaoViewModel : ViewModel() {
                 Log.d("[카카오로그인]", "로그인에 성공하였습니다.\n${token.accessToken}")
                 UserApiClient.instance.accessTokenInfo { _, _ ->
                     UserApiClient.instance.me { user, _ ->
-                        //nickname.text = "닉네임: ${user?.kakaoAccount?.profile?.nickname}"
+                        val userId = user?.id.toString()
+                        val userNickname = user?.kakaoAccount?.profile?.nickname
+                        if(userNickname != null) {
+                            val profile = Profile(userNickname)
+                            val kakaoAccount = KakaoAccount(profile)
+                            performLogin(userId, kakaoAccount)
+                        }
                     }
                 }
             } else {
@@ -91,4 +112,34 @@ class KakaoViewModel : ViewModel() {
             }
         }
     }
+
+    private fun performLogin(id: String, account: KakaoAccount) {
+        val call = LoginRetrofit.apiService.login(LoginWithKakaoRequest(id, account))
+        call.enqueue(object : Callback<LoginWithKakaoResponse> {
+            override fun onResponse(
+                call: Call<LoginWithKakaoResponse>,
+                response: Response<LoginWithKakaoResponse>
+            ) {
+                val statusCode = response.code()
+                _statusCode.value = statusCode
+                if (response.isSuccessful && response.body() != null) {
+                    val response  = response.body()!!
+                    LoginSuccessData(
+                        id = response.id,
+                        nickname = response.nickname,
+                        AccessToken = response.AccessToken
+                    )
+                    _isLoggedIn.value = true
+                } else {
+                    // 오류 처리
+                    _isLoggedIn.value = false
+                }
+            }
+
+            override fun onFailure(call: Call<LoginWithKakaoResponse>, t: Throwable) {
+                // 네트워크 오류 처리
+            }
+        })
+    }
+
 }

@@ -10,4 +10,8 @@
     <string name="naverSecretKey">M9_WizvSlo</string>
     <string name="naverAppName">Daily Planner Haru</string>
     <string name="kakaoNativeKey">8abe9f2ab444e79fc1aa16186f8c3259</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

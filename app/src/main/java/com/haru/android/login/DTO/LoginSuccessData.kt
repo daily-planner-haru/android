@@ -1,0 +1,7 @@
+package com.haru.android.login.DTO
+
+data class LoginSuccessData(
+    val id: String,
+    val nickname: String,
+    val AccessToken: String
+)
