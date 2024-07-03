@@ -5,4 +5,12 @@
     <color name="blue">#0027FF</color>
     <color name="kakaoColor">#FFEB3B</color>
     <color name="naverColor">#4CAF50</color>
+    <color name="today_border">#e4e4e4</color>
+    <color name="today_background">#85f7f7f7</color>
+    <color name="colorPrimary">#37474f</color>
+    <color name="secundaryTextColor">#757575</color>
+    <color name="primaryTextColor">#4d4d4d</color>
+    <color name="colorHover">#30818181</color>
+    <color name="menu_background">#666666</color>
+    <color name="textColor">#FF000000</color>
 </resources>

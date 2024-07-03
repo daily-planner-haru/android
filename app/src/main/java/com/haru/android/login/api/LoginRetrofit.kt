@@ -15,11 +15,11 @@ object LoginRetrofit {
         .baseUrl(loginBaseURL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val apiService: kakaoLoginInterface = retrofit.create(kakaoLoginInterface::class.java)
+    val apiService: KakaoLoginInterface = retrofit.create(KakaoLoginInterface::class.java)
     // TODO : implement interface login & signup
 }
 
-interface kakaoLoginInterface {
+interface KakaoLoginInterface {
     @POST("/oauth/kakao/singin")
     fun login(@Body request: LoginWithKakaoRequest): Call<LoginWithKakaoResponse>
 }

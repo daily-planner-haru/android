@@ -91,6 +91,7 @@ class KakaoViewModel : ViewModel() {
                     }
 
                     else -> { // Unknown
+                        Log.d("[카카오로그인]", error.toString());
                         Log.d("[카카오로그인]", "기타 에러")
                     }
                 }

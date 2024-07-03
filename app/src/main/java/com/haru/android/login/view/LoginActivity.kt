@@ -17,6 +17,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // TODO: replace skip login
+        startMain()
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -54,9 +57,7 @@ class LoginActivity : AppCompatActivity() {
         kakaoViewModel.isLoggedIn.observe(this) { isLoggedIn ->
             if (isLoggedIn) {
                 // 로그인 성공 시 처리, 예: 메인 화면으로 이동
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish() // LoginActivity 종료
+                startMain()
             } else {
                 // 로그인 실패 시 처리
                 kakaoViewModel.statusCode.value?.let { handleErrorCode(it) }
@@ -88,4 +89,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun startMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // LoginActivity 종료
+    }
 }

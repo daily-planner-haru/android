@@ -3,7 +3,10 @@ package com.haru.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.haru.android.Dailiy.DTO.Event
+import com.haru.android.Dailiy.DTO.Reminder
 import com.haru.android.databinding.ActivityMainBinding
+import com.haru.android.mockup.MockEventQueue
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +17,5 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.e("test", "test")
     }
 }
